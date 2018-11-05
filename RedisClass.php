@@ -20,7 +20,7 @@ class RedisClass
                 throw new Exception('the redis extension  not found');
             }
         } catch (Exception $e) {
-            exit($e -> getMessage());
+            exit($e->getMessage());
         }
 
         self::$redis[$dbNum] = new Redis();
@@ -31,11 +31,13 @@ class RedisClass
                 self::$redis[$dbNum]->auth($password);
             }
         } catch (Exception $e) {
-            echo '错误代码：'.$e -> getCode().'错误信息'.$e -> getMessage();
+            echo '错误代码：' . $e->getCode() . '错误信息' . $e->getMessage();
         }
     }
 
-    private function __clone(){}
+    private function __clone()
+    {
+    }
 
 
     public static function getSingleInstance($dbNum = 0, $host, $port, $timeout = 2, $password = '')
@@ -54,10 +56,17 @@ class RedisClass
 
     public static function set($dbNum, $key, $val)
     {
-        var_dump(self::$redis[$dbNum] -> ping());
+
+        $num = self::$redis[$dbNum]->set($key, $val);
+
+        if ($num > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }
 
 $redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
-$redis::set(0, 'a', 'b');
-var_dump($redis);
+$redis->set(0, 'a', 'b');

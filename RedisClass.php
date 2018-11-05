@@ -103,9 +103,9 @@ class RedisClass
     public function getExpireTime($dbNum, $key, $isP = false)
     {
         if((bool)$isP){
-            $time = self::$redis[$dbNum] -> ttl($key);
-        } else {
             $time = self::$redis[$dbNum] -> pttl($key);
+        } else {
+            $time = self::$redis[$dbNum] -> ttl($key);
         }
 
         if($time){

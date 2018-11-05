@@ -343,7 +343,7 @@ class RedisClass
     }
 
 }
-
+echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 var_dump($redis -> getKeys());
 var_dump($redis -> scan());

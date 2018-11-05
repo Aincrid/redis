@@ -150,7 +150,7 @@ class RedisClass
      * @param int $dbNum
      * @return array
      */
-    public function scan($it = NULL, $pattern = '*', $count = 50, $retry = 1, $dbNum = 0)
+    public function scan($pattern = '*', $count = 50, $retry = 1, $dbNum = 0)
     {
         if ($retry) {
 
@@ -163,6 +163,7 @@ class RedisClass
 
         }
         $resultArr = [];
+        $it = NULL;
         do {
 
             $resultArr = array_merge(self::$redis[$dbNum]->scan($it, $pattern, $count), $resultArr);
@@ -346,4 +347,4 @@ class RedisClass
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 var_dump($redis -> getKeys());
-var_dump($redis -> scan());
+var_dump($redis -> scan('*', 3, 0));

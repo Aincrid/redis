@@ -148,7 +148,7 @@ $redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
 echo $redis->get(0, 'a');
 $redis -> expire(0, 'a', 3600);
 echo '时间段'.$redis -> getExpireTime(0, 'a').'<br>';
-$redis -> expire(0, 'a', strtotime('+1day'));
-echo '时间戳'.$redis -> getExpireTime(0, 'a').'<br>';
-
-echo '毫秒'.$redis -> getExpireTime(0, 'a');
+//$redis -> expire(0, 'a', strtotime('+1day'));
+//echo '时间戳'.$redis -> getExpireTime(0, 'a').'<br>';
+//
+//echo '毫秒'.$redis -> getExpireTime(0, 'a');

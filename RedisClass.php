@@ -53,7 +53,7 @@ class RedisClass
         return self::$_instance[$dbNum];
     }
 
-    ############################## 字符串 String #####################################
+    ############################## 通用 #####################################
 
     public function delete($key, $dbNum = 0)
     {
@@ -97,27 +97,27 @@ class RedisClass
     /**
      * @param $dbNum
      * @param $key
-     * @param bool $isP  是否获取毫秒
+     * @param bool $isP 是否获取毫秒
      * @return bool
      */
     public function getExpireTime($key, $isP = false, $dbNum = 0)
     {
-        if((bool)$isP){
-            $time = self::$redis[$dbNum] -> pttl($key);
+        if ((bool)$isP) {
+            $time = self::$redis[$dbNum]->pttl($key);
         } else {
-            $time = self::$redis[$dbNum] -> ttl($key);
+            $time = self::$redis[$dbNum]->ttl($key);
         }
 
-        if($time){
+        if ($time) {
             return $time;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function persist($dbNum = 0, $key)
+    public function persist($key, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> persist($key);
+        return self::$redis[$dbNum]->persist($key);
     }
 
     /**
@@ -126,10 +126,72 @@ class RedisClass
      * @param $key
      * @return mixed
      */
-    public function exists($key, $dbNum)
+    public function exists($key, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> exists($key);
+        return self::$redis[$dbNum]->exists($key);
     }
+
+    /**
+     *  获取该模式对应的键, * 表示所有键
+     * @param string $pattern
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function getKeys($pattern = '*', $dbNum = 0)
+    {
+        return self::$redis[$dbNum]->keys($pattern);
+    }
+
+    /**
+     * @param null $it
+     * @param string $pattern
+     * @param int $count 每次便利$count, 不一定返回$count条
+     * @param int $retry 是否重复scan
+     * @param int $dbNum
+     * @return array
+     */
+    public function scan($it = NULL, $pattern = '*', $count = 50, $retry = 1, $dbNum = 0)
+    {
+        if ($retry) {
+
+            self::$redis[$dbNum]->setOption(Redis::OPT_SCAN, Redis::SCAN_RETRY);
+
+        } else {
+
+            // 仅scan一次
+            self::$redis[$dbNum]->setOption(Redis::OPT_SCAN, Redis::SCAN_NORETRY);
+
+        }
+        $resultArr = [];
+        do {
+
+            $resultArr = array_merge(self::$redis[$dbNum]->scan($it, $pattern, $count), $resultArr);
+
+        } while ($it > 0);
+
+        return $resultArr;
+    }
+
+
+    /**
+     * @param $key
+     * @param array $option 参数数组
+     *  'by' => 'some_pattern_*',
+     *  'limit' => array(0, 1),
+     *  'get' => 'some_other_pattern_*' or an array of patterns, // 取出对应的键值
+     *  'sort' => 'asc' or 'desc',
+     *  'alpha' => TRUE, // 根据字母排序
+     *  'store' => 'external-key' // 将排序后的结果保存到该键上
+     * @param int $dbNum
+     *  返回排序后的数组或数组的元素
+     */
+    public function sort($key, $option = [], $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> sort($key, $option);
+    }
+
+
+
 
     ############################## 字符串 String #####################################
 
@@ -183,7 +245,7 @@ class RedisClass
      */
     public function incrBy($key, $length = 1, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> incrBy($key, $length);
+        return self::$redis[$dbNum]->incrBy($key, $length);
     }
 
     /**
@@ -195,7 +257,7 @@ class RedisClass
      */
     public function incrByFloat($key, $length = 1.0, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> incrByFloat($key, $length);
+        return self::$redis[$dbNum]->incrByFloat($key, $length);
     }
 
     /**
@@ -207,7 +269,7 @@ class RedisClass
      */
     public function decrBy($key, $length = 1, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> decrBy($key, $length);
+        return self::$redis[$dbNum]->decrBy($key, $length);
     }
 
     /**
@@ -219,7 +281,7 @@ class RedisClass
      */
     public function decrByFloat($key, $length = 1.0, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> decrByFloat($key, $length);
+        return self::$redis[$dbNum]->decrByFloat($key, $length);
     }
 
     /**
@@ -231,16 +293,57 @@ class RedisClass
      */
     public function append($key, $string, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> append($key, $string);
+        return self::$redis[$dbNum]->append($key, $string);
     }
 
+    /**
+     * 不存在的长度为0
+     * @param $key
+     * @param int $dbNum
+     * @return int 字符串长度
+     */
     public function strLen($key, $dbNum = 0)
     {
-        return self::$redis[$dbNum] -> strLen($key);
+        return self::$redis[$dbNum]->strLen($key);
     }
 
+    /**
+     * 返回字符串从开始索引到结束索引的串, 可以是负数
+     * @param $key
+     * @param $start
+     * @param $end
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function getRange($key, $start, $end, $dbNum = 0)
+    {
+        return self::$redis[$dbNum]->getRange($key, $start, $end);
+    }
+
+    /**
+     * 批量设置
+     * @param array $key
+     * @param $dbNum
+     * @return bool
+     */
+    public function mSet($keyArray, $dbNum = 0)
+    {
+        return self::$redis[$dbNum]->mSet($keyArray);
+    }
+
+    /**
+     * 批量获取值, 若不存在, 在键值位置显示false
+     * @param array $key
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function mGet($keyArray, $dbNum = 0)
+    {
+        return self::$redis[$dbNum]->mGet($keyArray);
+    }
 
 }
 
-$redis = RedisClass::getSingleInstance( '127.0.0.1', '6379');
-var_dump($redis -> strLen('ds'));
+$redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
+var_dump($redis -> getKeys());
+var_dump($redis -> scan());

@@ -24,6 +24,8 @@ class RedisClass
         }
 
         self::$redis[$dbNum] = new Redis();
+        var_dump(self::$redis);
+        die;
         try {
             self::$redis[$dbNum]->pconnect($host, $port);
             if ($password != '') {

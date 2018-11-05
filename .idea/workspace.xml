@@ -16,8 +16,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="240" column="38" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
+            <state relative-caret-position="378">
+              <caret line="238" column="52" selection-start-line="238" selection-start-column="52" selection-end-line="238" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -98,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541383403212</updated>
-      <workItem from="1541383406865" duration="14805000" />
+      <workItem from="1541383406865" duration="15326000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -125,7 +125,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14805000" />
+    <option name="totallyTimeSpent" value="15326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="0" width="1400" height="848" extended-state="0" />
@@ -140,7 +140,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" weight="0.32911393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32489452" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32489452" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -172,8 +172,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="240" column="38" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
+        <state relative-caret-position="378">
+          <caret line="238" column="52" selection-start-line="238" selection-start-column="52" selection-end-line="238" selection-end-column="52" />
         </state>
       </provider>
     </entry>

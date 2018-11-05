@@ -223,6 +223,7 @@ class RedisClass
     }
 
     /**
+     * 键不存在的会自动创建, 然后赋值
      * @param $key
      * @param $string
      * @param int $dbNum
@@ -233,9 +234,13 @@ class RedisClass
         return self::$redis[$dbNum] -> append($key, $string);
     }
 
+    public function strLen($key, $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> strLen($key);
+    }
+
 
 }
 
 $redis = RedisClass::getSingleInstance( '127.0.0.1', '6379');
-var_dump($redis -> append('bs', 'asdfg'));
-var_dump($redis -> append('es', 'a'));
+var_dump($redis -> strLen('ds'));

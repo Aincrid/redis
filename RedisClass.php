@@ -174,7 +174,9 @@ class RedisClass
 }
 
 $redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
-$redis -> set(0, 'a', 1);
-$redis -> set(0, 'b', 1);
+//$redis -> set(0, 'a', 1);
+//$redis -> set(0, 'b', 1);
 
-var_dump($redis -> exists(0, ['a', 'c', 'b']));
+
+
+var_dump($redis -> exists(0, ['as', 'cs', 'bs']));

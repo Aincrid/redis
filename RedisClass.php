@@ -59,3 +59,7 @@ class RedisClass
 $redis = RedisClass::getSingleInstance('192.168.17.128', '6379');
 echo '<pre>';
 var_dump($redis);
+
+$redis = new Redis();
+$redis -> connect('127.0.0.1', '6379');
+var_dump($redis);

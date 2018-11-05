@@ -45,7 +45,7 @@ class RedisClass
     {
         self::$dbNum++;
         try {
-            if (isset(self::$_instance[self::$dbNum]) && self::$_instance[self::$dbNum]->redis[self::$dbNum]->Ping() == 'Pong') {
+            if (isset(self::$_instance[self::$dbNum]) && self::$_instance[self::$dbNum]->redis[self::$dbNum]->Ping() == '+PONG') {
                 return self::$_instance[self::$dbNum];
             }
         } catch (Exception $e) {

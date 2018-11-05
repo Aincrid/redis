@@ -54,7 +54,7 @@ class RedisClass
     }
 
 
-    public static function set($dbNum, $key, $val)
+    public function set($dbNum, $key, $val)
     {
 
         $num = self::$redis[$dbNum]->set($key, $val);
@@ -66,7 +66,16 @@ class RedisClass
         }
 
     }
+
+    public function get($dbNum, $key)
+    {
+        if(! self::$redis[$dbNum] -> exists($key)){
+            return false;
+        }
+
+        return self::$redis[$dbNum] -> get($key);
+    }
 }
 
 $redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
-$redis->set(0, 'a', 'b');
+echo $redis -> get(0, 'a');

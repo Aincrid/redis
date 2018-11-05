@@ -349,3 +349,4 @@ $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 var_dump($redis -> getKeys());
 var_dump($redis -> scan('a*'));
 var_dump($redis -> scan('b*'));
+var_dump($redis -> scan('*s'));

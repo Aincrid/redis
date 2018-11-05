@@ -67,4 +67,4 @@ try {
 }catch(Exception $e){
     echo $e -> getMessage();
 }
-var_dump($redis);
+var_dump($redis -> ping());

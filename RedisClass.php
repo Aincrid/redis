@@ -13,7 +13,7 @@ class RedisClass
     private static $redis = [];
 
 
-    private function __construct($dbNum, $host = '127.0.0.1', $port = '6379', $timeout = '0', $password = '')
+    private function __construct($dbNum = 0, $host = '127.0.0.1', $port = '6379', $timeout = '0', $password = '')
     {
         try {
             if (!extension_loaded('redis')) {
@@ -40,7 +40,7 @@ class RedisClass
     }
 
 
-    public static function getSingleInstance($dbNum = 0, $host, $port, $timeout = 2, $password = '')
+    public static function getSingleInstance($host, $port, $timeout = 2, $password = '', $dbNum = 0)
     {
         try {
             if (isset(self::$_instance[$dbNum]) && self::$_instance[$dbNum]->redis[$dbNum]->Ping() == '+PONG') {
@@ -55,7 +55,7 @@ class RedisClass
 
     ############################## 字符串 String #####################################
 
-    public function delete($dbNum, $key)
+    public function delete($key, $dbNum = 0)
     {
         if (!self::$redis[$dbNum]->delete($key)) {
             return false;
@@ -69,7 +69,7 @@ class RedisClass
      * @param $dbNum
      * @param $time int 过期时间段
      */
-    public function expire($dbNum, $key, $time)
+    public function expire($key, $time, $dbNum = 0)
     {
         if (self::$redis[$dbNum]->expire($key, $time)) {
             return true;
@@ -85,7 +85,7 @@ class RedisClass
      * @param $timestamp
      * @return bool
      */
-    public function expireAt($dbNum, $key, $timestamp)
+    public function expireAt($key, $timestamp, $dbNum = 0)
     {
         if (self::$redis[$dbNum]->expireAt($key, $timestamp)) {
             return true;
@@ -100,7 +100,7 @@ class RedisClass
      * @param bool $isP  是否获取毫秒
      * @return bool
      */
-    public function getExpireTime($dbNum, $key, $isP = false)
+    public function getExpireTime($key, $isP = false, $dbNum = 0)
     {
         if((bool)$isP){
             $time = self::$redis[$dbNum] -> pttl($key);
@@ -115,15 +115,19 @@ class RedisClass
         }
     }
 
+    public function persist($dbNum = 0, $key)
+    {
+        return self::$redis[$dbNum] -> persist($key);
+    }
+
     /**
-     * 判断键是否存在, redis 版本小于4.0, 只能判断一个, 大于4.0, 可以批量判断
+     * 判断键是否存在
      * @param $dbNum
      * @param $key
      * @return mixed
      */
-    public function exists($dbNum, $key)
+    public function exists($key, $dbNum)
     {
-        var_dump(self::$redis[$dbNum] -> info());
         return self::$redis[$dbNum] -> exists($key);
     }
 
@@ -136,7 +140,7 @@ class RedisClass
      * @param $val
      * @return bool
      */
-    public function set($dbNum, $key, $val)
+    public function set($key, $val, $dbNum = 0)
     {
 
         $num = self::$redis[$dbNum]->set($key, $val);
@@ -155,7 +159,7 @@ class RedisClass
      * @param $key
      * @return bool
      */
-    public function get($dbNum, $key)
+    public function get($key, $dbNum = 0)
     {
         $string = self::$redis[$dbNum]->get($key);
         if ($string) {
@@ -170,13 +174,68 @@ class RedisClass
 
     }
 
+    /**
+     * 不存在的默认为0, 自增, 默认1
+     * @param $key
+     * @param int $length
+     * @param int $dbNum
+     * @param int 返回自增后的值
+     */
+    public function incrBy($key, $length = 1, $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> incrBy($key, $length);
+    }
+
+    /**
+     * 不存在的默认值为0, 再减$length
+     * @param $key
+     * @param float $length
+     * @param int $dbNum
+     * @return mixed  返回增加后的结果
+     */
+    public function incrByFloat($key, $length = 1.0, $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> incrByFloat($key, $length);
+    }
+
+    /**
+     * 不存在的默认为0, 减$length, 返回计算后的值
+     * @param $key
+     * @param int $length
+     * @param int $dbNum
+     * @param int 返回减后的值
+     */
+    public function decrBy($key, $length = 1, $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> decrBy($key, $length);
+    }
+
+    /**
+     * 不存在的默认值为0, 减$length, 返回计算后的值
+     * @param $key
+     * @param float $length
+     * @param int $dbNum
+     * @return mixed  返回减后的结果
+     */
+    public function decrByFloat($key, $length = 1.0, $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> decrByFloat($key, $length);
+    }
+
+    /**
+     * @param $key
+     * @param $string
+     * @param int $dbNum
+     * @return mixed 返回拼接后的字符串长度
+     */
+    public function append($key, $string, $dbNum = 0)
+    {
+        return self::$redis[$dbNum] -> append($key, $string);
+    }
+
 
 }
 
-$redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
-//$redis -> set(0, 'a', 1);
-//$redis -> set(0, 'b', 1);
-
-
-
-var_dump($redis -> exists(0, ['as', 'cs', 'bs']));
+$redis = RedisClass::getSingleInstance( '127.0.0.1', '6379');
+var_dump($redis -> append('bs', 'asdfg'));
+var_dump($redis -> append('es', 'a'));

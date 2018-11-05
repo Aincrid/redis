@@ -53,7 +53,7 @@ class RedisClass
         return self::$_instance[$dbNum];
     }
 
-    ################### 通用操作 ################
+    ############################## 字符串 String #####################################
 
     public function delete($dbNum, $key)
     {
@@ -115,6 +115,26 @@ class RedisClass
         }
     }
 
+    /**
+     * 判断键是否存在, redis 版本小于4.0, 只能判断一个, 大于4.0, 可以批量判断
+     * @param $dbNum
+     * @param $key
+     * @return mixed
+     */
+    public function exists($dbNum, $key)
+    {
+        return self::$redis[$dbNum] -> exists($key);
+    }
+
+    ############################## 字符串 String #####################################
+
+    /**
+     * 设置值
+     * @param $dbNum
+     * @param $key
+     * @param $val
+     * @return bool
+     */
     public function set($dbNum, $key, $val)
     {
 
@@ -128,6 +148,12 @@ class RedisClass
 
     }
 
+    /**
+     *  获取值
+     * @param $dbNum
+     * @param $key
+     * @return bool
+     */
     public function get($dbNum, $key)
     {
         $string = self::$redis[$dbNum]->get($key);
@@ -142,13 +168,12 @@ class RedisClass
         }
 
     }
+
+
 }
 
 $redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
-echo $redis->get(0, 'a');
-$redis -> expire(0, 'a', 3600);
-echo '时间段'.$redis -> getExpireTime(0, 'a').'<br>';
-//$redis -> expire(0, 'a', strtotime('+1day'));
-//echo '时间戳'.$redis -> getExpireTime(0, 'a').'<br>';
-//
-//echo '毫秒'.$redis -> getExpireTime(0, 'a');
+$redis -> set(0, 'a', 1);
+$redis -> set(0, 'b', 1);
+
+var_dump($redis -> exists(0, ['a', 'c', 'b']));

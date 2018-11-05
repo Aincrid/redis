@@ -123,6 +123,7 @@ class RedisClass
      */
     public function exists($dbNum, $key)
     {
+        var_dump(self::$redis[$dbNum] -> info());
         return self::$redis[$dbNum] -> exists($key);
     }
 

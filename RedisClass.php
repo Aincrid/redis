@@ -52,11 +52,12 @@ class RedisClass
     }
 
 
-    protected static function set($dbNum, $key, $val)
+    public static function set($dbNum, $key, $val)
     {
         var_dump(self::$redis[$dbNum] -> ping());
     }
 }
 
 $redis = RedisClass::getSingleInstance(0, '127.0.0.1', '6379');
-$redis::set(0, 'a', 'c');
+$redis::set(0, 'a', 'b');
+var_dump($redis);

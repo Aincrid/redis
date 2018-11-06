@@ -547,8 +547,8 @@ class RedisClass
      */
     public function lPush($key, array $val)
     {
-        $val = implode(',', $val);
-        return (bool)self::$redis -> lPush($key, $val);
+        array_unshift($val, $key);
+        return (bool)call_user_func_array(array(self::$redis,'lPush'), $val);
     }
 
     /**

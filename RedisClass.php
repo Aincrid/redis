@@ -24,7 +24,7 @@ class RedisClass
         }
 
 
-        self::$redis = self::$redis? self::$redis : new Redis();
+        self::$redis = self::$redis ? self::$redis : new Redis();
 
         try {
             self::$redis->pconnect($host, $port);
@@ -486,6 +486,7 @@ class RedisClass
     }
 
     /**
+     * 返回符合条件的关联数组, 包括键和值
      * @param $table
      * @param $pattern
      * @param int $length
@@ -518,18 +519,22 @@ class RedisClass
      */
     public function hLen($table)
     {
-        return self::$redis -> hLen($table);
+        return self::$redis->hLen($table);
     }
 
     /**
-     * 获取值的长度, 没有返回长度0
+     * 获取值的长度, 键不存在返回false
      * @param $table
      * @param $key
      * @return mixed
      */
     public function hStrLen($table, $key)
     {
-        return self::$redis -> hStrLen($table, $key);
+        if (self::$redis->hExists($table, $key)) {
+            return self::$redis->hStrLen($table, $key);
+        } else {
+            return false;
+        }
     }
 
 }
@@ -537,7 +542,7 @@ class RedisClass
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 echo 'hScan<br>';
-var_dump($redis -> hScan('tao', 'b*'));
-var_dump($redis -> hScan('tao', 'a*'));
-var_dump($redis -> hStrLen('tao', 'e'));
-var_dump($redis -> hStrLen('tao', 'b'));
+var_dump($redis->hScan('tao', 'b*'));
+var_dump($redis->hScan('tao', 'a*'));
+var_dump($redis->hStrLen('tao', 'e'));
+var_dump($redis->hStrLen('tao', 'b'));

@@ -50,7 +50,7 @@ class RedisClass
         } catch (Exception $e) {
 
         }
-        self::$_instance[$dbNum] = new self($dbNum, $host, $port, $timeout, $password);
+        self::$_instance[$dbNum] = new self($host, $port, $timeout, $password);
         return self::$_instance[$dbNum];
     }
 

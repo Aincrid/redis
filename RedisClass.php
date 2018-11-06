@@ -506,6 +506,8 @@ class RedisClass
             }
 
         } while ($it > 0);
+
+        return $resultArray;
     }
 
 

@@ -24,9 +24,7 @@ class RedisClass
         }
 
 
-        self::$redis = self::$redis?? new Redis();
-        var_dump(self::$redis);
-        die;
+        self::$redis = self::$redis? self::$redis : new Redis();
 
         try {
             self::$redis->pconnect($host, $port);

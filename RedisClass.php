@@ -10,10 +10,10 @@ class RedisClass
 {
     private static $_instance = [];
 
-    private static $redis = [];
+    private static $redis = '';
 
 
-    private function __construct($dbNum = 0, $host = '127.0.0.1', $port = '6379', $timeout = '0', $password = '')
+    private function __construct($host = '127.0.0.1', $port = '6379', $timeout = '0', $password = '')
     {
         try {
             if (!extension_loaded('redis')) {
@@ -23,12 +23,13 @@ class RedisClass
             exit($e->getMessage());
         }
 
-        self::$redis[$dbNum] = new Redis();
+
+        self::$redis = self::$redis ?? new Redis();
 
         try {
-            self::$redis[$dbNum]->pconnect($host, $port);
+            self::$redis->pconnect($host, $port);
             if ($password != '') {
-                self::$redis[$dbNum]->auth($password);
+                self::$redis->auth($password);
             }
         } catch (Exception $e) {
             echo '错误代码：' . $e->getCode() . '错误信息' . $e->getMessage();
@@ -57,7 +58,7 @@ class RedisClass
 
     public function delete($key, $dbNum = 0)
     {
-        if (!self::$redis[$dbNum]->delete($key)) {
+        if (!self::$redis->delete($key)) {
             return false;
         } else {
             return true;
@@ -69,9 +70,9 @@ class RedisClass
      * @param $dbNum
      * @param $time int 过期时间段
      */
-    public function expire($key, $time, $dbNum = 0)
+    public function expire($key, $time)
     {
-        if (self::$redis[$dbNum]->expire($key, $time)) {
+        if (self::$redis->expire($key, $time)) {
             return true;
         } else {
             return false;
@@ -85,9 +86,9 @@ class RedisClass
      * @param $timestamp
      * @return bool
      */
-    public function expireAt($key, $timestamp, $dbNum = 0)
+    public function expireAt($key, $timestamp)
     {
-        if (self::$redis[$dbNum]->expireAt($key, $timestamp)) {
+        if (self::$redis->expireAt($key, $timestamp)) {
             return true;
         } else {
             return false;
@@ -100,12 +101,12 @@ class RedisClass
      * @param bool $isP 是否获取毫秒
      * @return bool
      */
-    public function getExpireTime($key, $isP = false, $dbNum = 0)
+    public function getExpireTime($key, $isP = false)
     {
         if ((bool)$isP) {
-            $time = self::$redis[$dbNum]->pttl($key);
+            $time = self::$redis->pttl($key);
         } else {
-            $time = self::$redis[$dbNum]->ttl($key);
+            $time = self::$redis->ttl($key);
         }
 
         if ($time) {
@@ -115,9 +116,9 @@ class RedisClass
         }
     }
 
-    public function persist($key, $dbNum = 0)
+    public function persist($key)
     {
-        return self::$redis[$dbNum]->persist($key);
+        return self::$redis->persist($key);
     }
 
     /**
@@ -126,9 +127,9 @@ class RedisClass
      * @param $key
      * @return mixed
      */
-    public function exists($key, $dbNum = 0)
+    public function exists($key)
     {
-        return self::$redis[$dbNum]->exists($key);
+        return self::$redis->exists($key);
     }
 
     /**
@@ -137,9 +138,9 @@ class RedisClass
      * @param int $dbNum
      * @return mixed
      */
-    public function getKeys($pattern = '*', $dbNum = 0)
+    public function getKeys($pattern = '*')
     {
-        return self::$redis[$dbNum]->keys($pattern);
+        return self::$redis->keys($pattern);
     }
 
     /**
@@ -150,23 +151,25 @@ class RedisClass
      * @param int $dbNum
      * @return array
      */
-    public function scan($pattern = '*', $count = 50, $retry = 1, $dbNum = 0)
+    public function scan($pattern = '*', $count = 50, $retry = 1)
     {
         if ($retry) {
 
-            self::$redis[$dbNum]->setOption(Redis::OPT_SCAN, Redis::SCAN_RETRY);
+            self::$redis->setOption(Redis::OPT_SCAN, Redis::SCAN_RETRY);
 
         } else {
 
             // 仅scan一次
-            self::$redis[$dbNum]->setOption(Redis::OPT_SCAN, Redis::SCAN_NORETRY);
+            self::$redis->setOption(Redis::OPT_SCAN, Redis::SCAN_NORETRY);
 
         }
         $resultArr = [];
         $it = NULL;
         do {
-
-            $resultArr = array_merge(self::$redis[$dbNum]->scan($it, $pattern, $count), $resultArr);
+            $arr = self::$redis->scan($it, $pattern, $count);
+            if (is_array($arr)) {
+                $resultArr = array_merge($arr, $resultArr);
+            }
 
         } while ($it > 0);
 
@@ -184,11 +187,33 @@ class RedisClass
      *  'alpha' => TRUE, // 根据字母排序
      *  'store' => 'external-key' // 将排序后的结果保存到该键上
      * @param int $dbNum
-     *  返回排序后的数组或数组的元素
+     *  返回排序后的数组或数组的元素 链表 集合
      */
-    public function sort($key, $option = [], $dbNum = 0)
+    public function sort($key, $option = [])
     {
-        return self::$redis[$dbNum] -> sort($key, $option);
+        return self::$redis->sort($key, $option);
+    }
+
+    /**
+     * 修改键名
+     * @param $key
+     * @param $newKey
+     * @param int $dbNum
+     * @return bool
+     */
+    public function rename($key, $newKey)
+    {
+        return self::$redis->rename($key, $newKey);
+    }
+
+    /**
+     * 随机返回一个键
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function random($dbNum = 0)
+    {
+        return self::$redis->randomKey();
     }
 
 
@@ -203,10 +228,10 @@ class RedisClass
      * @param $val
      * @return bool
      */
-    public function set($key, $val, $dbNum = 0)
+    public function set($key, $val)
     {
 
-        $num = self::$redis[$dbNum]->set($key, $val);
+        $num = self::$redis->set($key, $val);
 
         if ($num > 0) {
             return true;
@@ -222,12 +247,12 @@ class RedisClass
      * @param $key
      * @return bool
      */
-    public function get($key, $dbNum = 0)
+    public function get($key)
     {
-        $string = self::$redis[$dbNum]->get($key);
+        $string = self::$redis->get($key);
         if ($string) {
 
-            return self::$redis[$dbNum]->get($key);
+            return self::$redis->get($key);
 
         } else {
 
@@ -244,9 +269,9 @@ class RedisClass
      * @param int $dbNum
      * @param int 返回自增后的值
      */
-    public function incrBy($key, $length = 1, $dbNum = 0)
+    public function incrBy($key, $length = 1)
     {
-        return self::$redis[$dbNum]->incrBy($key, $length);
+        return self::$redis->incrBy($key, $length);
     }
 
     /**
@@ -256,9 +281,9 @@ class RedisClass
      * @param int $dbNum
      * @return mixed  返回增加后的结果
      */
-    public function incrByFloat($key, $length = 1.0, $dbNum = 0)
+    public function incrByFloat($key, $length = 1.0)
     {
-        return self::$redis[$dbNum]->incrByFloat($key, $length);
+        return self::$redis->incrByFloat($key, $length);
     }
 
     /**
@@ -268,9 +293,9 @@ class RedisClass
      * @param int $dbNum
      * @param int 返回减后的值
      */
-    public function decrBy($key, $length = 1, $dbNum = 0)
+    public function decrBy($key, $length = 1)
     {
-        return self::$redis[$dbNum]->decrBy($key, $length);
+        return self::$redis->decrBy($key, $length);
     }
 
     /**
@@ -280,9 +305,9 @@ class RedisClass
      * @param int $dbNum
      * @return mixed  返回减后的结果
      */
-    public function decrByFloat($key, $length = 1.0, $dbNum = 0)
+    public function decrByFloat($key, $length = 1.0)
     {
-        return self::$redis[$dbNum]->decrByFloat($key, $length);
+        return self::$redis->decrByFloat($key, $length);
     }
 
     /**
@@ -292,9 +317,9 @@ class RedisClass
      * @param int $dbNum
      * @return mixed 返回拼接后的字符串长度
      */
-    public function append($key, $string, $dbNum = 0)
+    public function append($key, $string)
     {
-        return self::$redis[$dbNum]->append($key, $string);
+        return self::$redis->append($key, $string);
     }
 
     /**
@@ -303,9 +328,9 @@ class RedisClass
      * @param int $dbNum
      * @return int 字符串长度
      */
-    public function strLen($key, $dbNum = 0)
+    public function strLen($key)
     {
-        return self::$redis[$dbNum]->strLen($key);
+        return self::$redis->strLen($key);
     }
 
     /**
@@ -316,9 +341,9 @@ class RedisClass
      * @param int $dbNum
      * @return mixed
      */
-    public function getRange($key, $start, $end, $dbNum = 0)
+    public function getRange($key, $start, $end)
     {
-        return self::$redis[$dbNum]->getRange($key, $start, $end);
+        return self::$redis->getRange($key, $start, $end);
     }
 
     /**
@@ -327,9 +352,9 @@ class RedisClass
      * @param $dbNum
      * @return bool
      */
-    public function mSet($keyArray, $dbNum = 0)
+    public function mSet($keyArray)
     {
-        return self::$redis[$dbNum]->mSet($keyArray);
+        return self::$redis->mSet($keyArray);
     }
 
     /**
@@ -338,15 +363,185 @@ class RedisClass
      * @param int $dbNum
      * @return mixed
      */
-    public function mGet($keyArray, $dbNum = 0)
+    public function mGet($keyArray)
     {
-        return self::$redis[$dbNum]->mGet($keyArray);
+        return self::$redis->mGet($keyArray);
+    }
+
+
+    ################################# hash 哈希 ###################################
+
+    /**
+     * 添加或修改hash值
+     * @param $table
+     * @param $key
+     * @param $val
+     * @param int $dbNum
+     * @return bool
+     */
+    public function hSet($table, $key, $val)
+    {
+        self::$redis->hSet($table, $key, $val);
+        $value = self::$redis->hGet($table, $key);
+
+        if ($val === $value) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 删除hash
+     * @param $table
+     * @param $key
+     * @param int $dbNum
+     * @return bool
+     */
+    public function hDel($table, $key)
+    {
+        return (bool)self::$redis->hDel($table, $key);
+    }
+
+    /**
+     *  返回值， 没有是false
+     * @param $table
+     * @param $key
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function hGet($table, $key)
+    {
+        return self::$redis->hGet($table, $key);
+    }
+
+    /**
+     * 获得hash表所有元素和值, 不存在返回？？
+     * @param $table
+     * @param $dbNum
+     * @return mixed
+     */
+    public function hGetAll($table)
+    {
+        return self::$redis->hGetAll($table);
+    }
+
+    /**
+     * 判断hash表是否有该键
+     * @param $table
+     * @param $key
+     * @param int $dbNum
+     * @return bool
+     */
+    public function hExists($table, $key)
+    {
+        return self::$redis->hExists($table, $key);
+    }
+
+    /**
+     * 返回新值
+     * @param $table
+     * @param $key
+     * @param $val
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function hIncrBy($table, $key, int $val)
+    {
+        return self::$redis->hIncrBy($table, $key, (int)$val);
+    }
+
+    /**
+     * 返回新值
+     * @param $table
+     * @param $key
+     * @param float $val
+     * @param int $dbNum
+     * @return mixed
+     */
+    public function hIncrByFloat($table, $key, float $val)
+    {
+        return self::$redis->hIncrByFloat($table, $key, $val);
+    }
+
+    /**
+     * 返回hash表中所有键
+     * @param $table
+     * @param int $dbNum
+     * @return array
+     */
+    public function hKeys($table)
+    {
+        return self::$redis->hKeys($table);
+    }
+
+    /**
+     * 返回hash所有值
+     * @param $table
+     * @return array
+     */
+    public function hVals($table)
+    {
+        return self::$redis->hVals($table);
+    }
+
+    /**
+     * @param $table
+     * @param $pattern
+     * @param int $length
+     */
+    public function hScan($table, $pattern, $length = 50)
+    {
+        $it = NULL;
+
+        $resultArray = [];
+
+        self::$redis->setOption(Redis::OPT_SCAN, Redis::SCAN_RETRY);
+
+        do {
+            $result = self::$redis->hScan($table, $pattern, $length);
+
+            if (is_array($result)) {
+                $resultArray = array_merge($resultArray, $result);
+            }
+
+        } while ($it > 0);
+    }
+
+
+    /**
+     * 返回哈希表长度, 不存在返回false
+     * @param $table
+     * @return int|bool
+     */
+    public function hLen($table)
+    {
+        return self::$redis -> hLen($table);
+    }
+
+    /**
+     * 获取值的长度
+     * @param $table
+     * @param $key
+     * @return mixed
+     */
+    public function hStrLen($table, $key)
+    {
+        return self::$redis -> hStrLen($table, $key);
     }
 
 }
+
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
-var_dump($redis -> getKeys());
-var_dump($redis -> scan('a*'));
-var_dump($redis -> scan('b*'));
-var_dump($redis -> scan('*s'));
+echo 'hset';
+var_dump($redis -> hSet('tao', 'a', 'a'));
+var_dump($redis -> hSet('tao', 'b', 'b'));
+var_dump($redis -> hSet('tao', 'c', 'c'));
+echo '<br>hGet';
+var_dump($redis -> hGet('tao', 'a'));
+echo '<br>.hKeys';
+var_dump($redis -> hKeys('tao'));
+echo '<br>.hDel';
+var_dump($redis -> hDel('tao', 'a'));
+var_dump($redis -> hDel('tao', 'e'));

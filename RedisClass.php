@@ -537,12 +537,35 @@ class RedisClass
         }
     }
 
+    ########################### 链表 list###########################
+
+    /**
+     * 左进, 成功true, 失败false
+     * @param $key
+     * @param $val
+     * @return bool
+     */
+    public function lPush($key, array $val)
+    {
+        $val = implode(',', $val);
+        return (bool)self::$redis -> lPush($key, $val);
+    }
+
+    /**
+     * 右进
+     * @param $key
+     * @param array $val
+     * @return bool
+     */
+    public function rPush($key, array $val)
+    {
+        $val = implode(',', $val);
+        return (bool)self::$redis->rPush($key, $val);
+    }
+
 }
 
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
-echo 'hScan<br>';
-var_dump($redis->hScan('tao', 'b*'));
-var_dump($redis->hScan('tao', 'a*'));
-var_dump($redis->hStrLen('tao', 'e'));
-var_dump($redis->hExists('tao', 'b'));
+echo 'lPush<br>';
+var_dump($redis->lPush('ta', ['a','b', 'c']));

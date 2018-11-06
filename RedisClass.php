@@ -499,7 +499,7 @@ class RedisClass
         self::$redis->setOption(Redis::OPT_SCAN, Redis::SCAN_RETRY);
 
         do {
-            $result = self::$redis->hScan($table, $pattern, $length);
+            $result = self::$redis->hScan($table, $it, $pattern, $length);
 
             if (is_array($result)) {
                 $resultArray = array_merge($resultArray, $result);
@@ -522,7 +522,7 @@ class RedisClass
     }
 
     /**
-     * 获取值的长度
+     * 获取值的长度, 没有返回长度0
      * @param $table
      * @param $key
      * @return mixed
@@ -540,3 +540,4 @@ echo 'hScan<br>';
 var_dump($redis -> hScan('tao', 'b*'));
 var_dump($redis -> hScan('tao', 'a*'));
 var_dump($redis -> hStrLen('tao', 'e'));
+var_dump($redis -> hStrLen('tao', 'b'));

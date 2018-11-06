@@ -534,14 +534,7 @@ class RedisClass
 
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
-echo 'hset';
-var_dump($redis -> hSet('tao', 'a', 'a'));
-var_dump($redis -> hSet('tao', 'b', 'b'));
-var_dump($redis -> hSet('tao', 'c', 'c'));
-echo '<br>hGet';
-var_dump($redis -> hGet('tao', 'a'));
-echo '<br>.hKeys';
-var_dump($redis -> hKeys('tao'));
-echo '<br>.hDel';
-var_dump($redis -> hDel('tao', 'a'));
-var_dump($redis -> hDel('tao', 'e'));
+echo 'hScan<br>';
+var_dump($redis -> hScan('tao', 'b*'));
+var_dump($redis -> hScan('tao', 'a*'));
+var_dump($redis -> hStrLen('tao', 'e'));

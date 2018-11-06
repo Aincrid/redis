@@ -16,8 +16,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="547" column="38" lean-forward="true" selection-start-line="547" selection-start-column="38" selection-end-line="547" selection-end-column="38" />
+            <state relative-caret-position="133">
+              <caret line="435" column="41" lean-forward="true" selection-start-line="435" selection-start-column="41" selection-end-line="435" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -37,6 +37,7 @@
     <findStrings>
       <find>self::$dbNum</find>
       <find>self::$redis[$dbNum]</find>
+      <find>hEx</find>
     </findStrings>
     <replaceStrings>
       <replace>$dbNum</replace>
@@ -112,7 +113,7 @@
       <updated>1541383403212</updated>
       <workItem from="1541383406865" duration="16217000" />
       <workItem from="1541425729539" duration="6125000" />
-      <workItem from="1541484250993" duration="9882000" />
+      <workItem from="1541484250993" duration="9964000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -139,7 +140,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32224000" />
+    <option name="totallyTimeSpent" value="32306000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="268" y="42" width="1400" height="848" extended-state="0" />
@@ -200,8 +201,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="547" column="38" lean-forward="true" selection-start-line="547" selection-start-column="38" selection-end-line="547" selection-end-column="38" />
+        <state relative-caret-position="133">
+          <caret line="435" column="41" lean-forward="true" selection-start-line="435" selection-start-column="41" selection-end-line="435" selection-end-column="41" />
         </state>
       </provider>
     </entry>

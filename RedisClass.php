@@ -433,7 +433,7 @@ class RedisClass
      * @param int $dbNum
      * @return bool
      */
-    public function hExists($table, $key) :bool
+    public function hExists($table, $key)
     {
         return self::$redis->hExists($table, $key);
     }

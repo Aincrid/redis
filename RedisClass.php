@@ -433,7 +433,7 @@ class RedisClass
      * @param int $dbNum
      * @return bool
      */
-    public function hExists($table, $key)
+    public function hExists($table, $key) :bool
     {
         return self::$redis->hExists($table, $key);
     }
@@ -545,4 +545,4 @@ echo 'hScan<br>';
 var_dump($redis->hScan('tao', 'b*'));
 var_dump($redis->hScan('tao', 'a*'));
 var_dump($redis->hStrLen('tao', 'e'));
-var_dump($redis->hStrLen('tao', 'b'));
+var_dump($redis->hExists('tao', 'b'));

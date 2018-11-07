@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ec57749-dcc3-43ee-b285-d190dcd1635b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RedisClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/RedisClass.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="562" column="77" lean-forward="true" selection-start-line="562" selection-start-column="77" selection-end-line="562" selection-end-column="77" />
+            <state relative-caret-position="345">
+              <caret line="1111" lean-forward="true" selection-start-line="1111" selection-end-line="1111" />
             </state>
           </provider>
         </entry>
@@ -25,8 +26,8 @@
       <file leaf-file-name="Redis.php" pinned="false" current-in-tab="false">
         <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/redis/Redis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+            <state relative-caret-position="97">
+              <caret line="2711" column="68" selection-start-line="2711" selection-start-column="64" selection-end-line="2711" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -38,6 +39,9 @@
       <find>self::$dbNum</find>
       <find>self::$redis[$dbNum]</find>
       <find>hEx</find>
+      <find>exists</find>
+      <find>sScan</find>
+      <find>lPush</find>
     </findStrings>
     <replaceStrings>
       <replace>$dbNum</replace>
@@ -66,9 +70,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="335" />
-    <option name="y" value="52" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="517" />
+    <option name="y" value="-15" />
     <option name="width" value="1750" />
     <option name="height" value="1060" />
   </component>
@@ -78,8 +82,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="redis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -113,7 +127,8 @@
       <updated>1541383403212</updated>
       <workItem from="1541383406865" duration="16217000" />
       <workItem from="1541425729539" duration="6125000" />
-      <workItem from="1541484250993" duration="12449000" />
+      <workItem from="1541484250993" duration="12523000" />
+      <workItem from="1541554561530" duration="20541000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -140,13 +155,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34791000" />
+    <option name="totallyTimeSpent" value="55406000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="268" y="42" width="1400" height="848" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08122206" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07372654" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067025" side_tool="true" weight="0.3281027" />
@@ -155,7 +170,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32911393" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49932975" visible="true" weight="0.32770744" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932975" weight="0.32770744" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -180,6 +195,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10773">
+          <caret line="567" column="9" lean-forward="true" selection-start-line="567" selection-start-column="9" selection-end-line="567" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/redis/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1330">
+          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RedisClass.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3230">
           <caret line="170" column="13" lean-forward="true" selection-start-line="170" selection-start-column="13" selection-end-line="170" selection-end-column="13" />
         </state>
@@ -194,15 +223,15 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/redis/Redis.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+        <state relative-caret-position="97">
+          <caret line="2711" column="68" selection-start-line="2711" selection-start-column="64" selection-end-line="2711" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="562" column="77" lean-forward="true" selection-start-line="562" selection-start-column="77" selection-end-line="562" selection-end-column="77" />
+        <state relative-caret-position="345">
+          <caret line="1111" lean-forward="true" selection-start-line="1111" selection-end-line="1111" />
         </state>
       </provider>
     </entry>

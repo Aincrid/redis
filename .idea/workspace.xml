@@ -16,8 +16,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="1155" column="38" selection-start-line="1155" selection-start-column="38" selection-end-line="1155" selection-end-column="38" />
+            <state relative-caret-position="289">
+              <caret line="1145" column="40" lean-forward="true" selection-start-line="1145" selection-start-column="40" selection-end-line="1145" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -127,7 +127,7 @@
       <workItem from="1541383406865" duration="16217000" />
       <workItem from="1541425729539" duration="6125000" />
       <workItem from="1541484250993" duration="12523000" />
-      <workItem from="1541554561530" duration="22530000" />
+      <workItem from="1541554561530" duration="23155000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -154,7 +154,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57395000" />
+    <option name="totallyTimeSpent" value="58020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="805" y="35" width="1400" height="848" extended-state="0" />
@@ -229,8 +229,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="1155" column="38" selection-start-line="1155" selection-start-column="38" selection-end-line="1155" selection-end-column="38" />
+        <state relative-caret-position="289">
+          <caret line="1145" column="40" lean-forward="true" selection-start-line="1145" selection-start-column="40" selection-end-line="1145" selection-end-column="40" />
         </state>
       </provider>
     </entry>

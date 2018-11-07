@@ -1141,16 +1141,6 @@ class RedisClass
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 echo 'lPush<br>';
-//var_dump($redis->lPush('ta', ['a', 'b', 'c']));
-//var_dump($redis -> rPopLpush('ta', 'tao'));
-//var_dump($redis -> lIndex('ta', 0));
-//var_dump($redis -> lIndex('ta', 10));
-//var_dump($redis -> lInsert('ta', 1, 'Array', 'aa'));
-//var_dump($redis -> lInsert('ta', 0, 'Array', 'bb'));
-var_dump($redis -> lLen('ta'));
-var_dump($redis -> lRange('ta', 0, -1));
-var_dump($redis -> lRemove('ta', 'Array', 1));
-var_dump($redis -> lRange('ta', 0, -1));
 var_dump($redis -> lSet('ta', 0, 'one'));
 
-var_dump($redis -> lTrim('ta', 1, 2));
+var_dump($redis -> lRange('ta', 0, -1));

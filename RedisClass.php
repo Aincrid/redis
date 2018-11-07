@@ -662,7 +662,7 @@ class RedisClass
     }
 
     /**
-     * 表示在$pivot之前或之后添加一个值，成功返回list中元素的数量, 否则返回false
+     * 表示在$pivot(若有多个$pivot，只在第一个之前或之后)之前或之后添加一个值，成功返回list中元素的数量, 否则返回false
      * @param string $key
      * @param int $isBefore
      * @param string $pivot
@@ -1145,5 +1145,12 @@ echo 'lPush<br>';
 //var_dump($redis -> rPopLpush('ta', 'tao'));
 //var_dump($redis -> lIndex('ta', 0));
 //var_dump($redis -> lIndex('ta', 10));
-var_dump($redis -> lInsert('ta', 1, 'Array', 'aa'));
-var_dump($redis -> lInsert('ta', 0, 'Array', 'bb'));
+//var_dump($redis -> lInsert('ta', 1, 'Array', 'aa'));
+//var_dump($redis -> lInsert('ta', 0, 'Array', 'bb'));
+var_dump($redis -> lLen('ta'));
+var_dump($redis -> lRange('ta', 0, -1));
+var_dump($redis -> lRemove('ta', 'Array', 1));
+var_dump($redis -> lRange('ta', 0, -1));
+var_dump($redis -> lSet('ta', 0, 'one'));
+
+var_dump($redis -> lTrim('ta', 1, 2));

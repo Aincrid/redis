@@ -1142,4 +1142,6 @@ echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 echo 'lPush<br>';
 var_dump($redis->lPush('ta', ['a', 'b', 'c']));
-var_dump($redis -> rPopLpush('ta', 'tao'));
+//var_dump($redis -> rPopLpush('ta', 'tao'));
+var_dump($redis -> lIndex('ta', 0));
+var_dump($redis -> lIndex('ta', 10));

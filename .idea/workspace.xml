@@ -14,8 +14,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="1143" column="18" lean-forward="true" selection-start-line="1143" selection-start-column="18" selection-end-line="1143" selection-end-column="18" />
+            <state relative-caret-position="299">
+              <caret line="1145" column="33" lean-forward="true" selection-start-line="1145" selection-start-column="33" selection-end-line="1145" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -117,7 +117,7 @@
       <workItem from="1541425729539" duration="6125000" />
       <workItem from="1541484250993" duration="12523000" />
       <workItem from="1541554561530" duration="23460000" />
-      <workItem from="1541726818267" duration="610000" />
+      <workItem from="1541726818267" duration="732000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -144,7 +144,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58935000" />
+    <option name="totallyTimeSpent" value="59057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="278" y="24" width="1400" height="848" extended-state="0" />
@@ -233,8 +233,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="1143" column="18" lean-forward="true" selection-start-line="1143" selection-start-column="18" selection-end-line="1143" selection-end-column="18" />
+        <state relative-caret-position="299">
+          <caret line="1145" column="33" lean-forward="true" selection-start-line="1145" selection-start-column="33" selection-end-line="1145" selection-end-column="33" />
         </state>
       </provider>
     </entry>

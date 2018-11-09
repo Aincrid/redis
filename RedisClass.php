@@ -908,7 +908,7 @@ class RedisClass
     public function sScan($key, $pattern, $count)
     {
         self::$redis -> setOption(REDIS::OPT_SCAN, REDIS::SCAN_RETRY);
-        $it = 0;
+        $it = null;
         $resultArr = [];
         do{
 

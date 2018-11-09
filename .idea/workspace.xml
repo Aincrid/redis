@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ec57749-dcc3-43ee-b285-d190dcd1635b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RedisClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/RedisClass.php" afterDir="false" />
-    </list>
+    <list default="true" id="2ec57749-dcc3-43ee-b285-d190dcd1635b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +14,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="1146" column="41" selection-start-line="1146" selection-start-column="41" selection-end-line="1146" selection-end-column="41" />
+            <state relative-caret-position="261">
+              <caret line="1143" column="18" lean-forward="true" selection-start-line="1143" selection-start-column="18" selection-end-line="1143" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -120,7 +117,7 @@
       <workItem from="1541425729539" duration="6125000" />
       <workItem from="1541484250993" duration="12523000" />
       <workItem from="1541554561530" duration="23460000" />
-      <workItem from="1541726818267" duration="363000" />
+      <workItem from="1541726818267" duration="610000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -147,7 +144,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58688000" />
+    <option name="totallyTimeSpent" value="58935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="278" y="24" width="1400" height="848" extended-state="0" />
@@ -236,8 +233,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="1146" column="41" selection-start-line="1146" selection-start-column="41" selection-end-line="1146" selection-end-column="41" />
+        <state relative-caret-position="261">
+          <caret line="1143" column="18" lean-forward="true" selection-start-line="1143" selection-start-column="18" selection-end-line="1143" selection-end-column="18" />
         </state>
       </provider>
     </entry>

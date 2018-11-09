@@ -1049,7 +1049,7 @@ class RedisClass
      */
     public function zRank($key, $member)
     {
-        return self::$redis -> zrank($key, $member);
+        return self::$redis -> zRank($key, $member);
     }
 
     /**
@@ -1060,7 +1060,7 @@ class RedisClass
      */
     public function zRevRank($key, $member)
     {
-        return self::$redis -> zrank($key, $member);
+        return self::$redis -> zRevRank($key, $member);
     }
 
     /**

@@ -1140,7 +1140,8 @@ class RedisClass
 
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
-echo 'lPush<br>';
-var_dump($redis -> lSet('ta', 0, 'one'));
-
-var_dump($redis -> lRange('ta', 0, -1));
+echo 'set<br>';
+var_dump($redis -> sAdd('set', ['a', 'b', 'c']));
+var_dump($redis -> sAdd('set2', ['b', 'c', 'd', 'e']));
+var_dump($redis -> sCard('set'));
+var_dump($redis -> sDiff('set', 'set2'));

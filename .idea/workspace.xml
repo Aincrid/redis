@@ -17,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="346">
-              <caret line="1150" column="50" selection-start-line="1150" selection-start-column="50" selection-end-line="1150" selection-end-column="50" />
+              <caret line="1151" column="42" lean-forward="true" selection-start-line="1151" selection-start-column="42" selection-end-line="1151" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -119,7 +119,7 @@
       <workItem from="1541425729539" duration="6125000" />
       <workItem from="1541484250993" duration="12523000" />
       <workItem from="1541554561530" duration="23460000" />
-      <workItem from="1541726818267" duration="2112000" />
+      <workItem from="1541726818267" duration="2860000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -146,7 +146,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60437000" />
+    <option name="totallyTimeSpent" value="61185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -262,7 +262,7 @@
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
-          <caret line="1150" column="50" selection-start-line="1150" selection-start-column="50" selection-end-line="1150" selection-end-column="50" />
+          <caret line="1151" column="42" lean-forward="true" selection-start-line="1151" selection-start-column="42" selection-end-line="1151" selection-end-column="42" />
         </state>
       </provider>
     </entry>

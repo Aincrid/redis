@@ -1142,10 +1142,13 @@ class RedisClass
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 echo 'set<br>';
-var_dump($redis -> sAdd('set', 'a', 'b', 'c'));
-var_dump($redis -> sAdd('set2', 'b', 'c', 'd', 'e'));
+//var_dump($redis -> sAdd('set', 'a', 'b', 'c'));
+//var_dump($redis -> sAdd('set2', 'b', 'c', 'd', 'e'));
 var_dump($redis -> sCard('set'));
 var_dump($redis -> sDiff('set', 'set2'));
 //var_dump($redis -> sDiffStore('sdiff', 'set', 'set2'));
-var_dump($redis -> sInter('set', 'set2'));
-var_dump($redis -> sInter('set', 'set2', 'set3'));
+//var_dump($redis -> sInter('set', 'set2'));
+//var_dump($redis -> sInter('set', 'set2', 'set3'));
+var_dump($redis -> sIsMember('set', 'a'));
+var_dump($redis -> sMembers('set'));
+var_dump($redis -> sMove('set2', 'set', 'e'));

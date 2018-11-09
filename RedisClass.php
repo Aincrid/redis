@@ -1142,8 +1142,11 @@ class RedisClass
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 echo 'set<br>';
-//var_dump($redis -> sPop('set'));
-//var_dump($redis -> sRandMember('set', 2));
-//var_dump($redis -> sRemove('set2', 'c', 'd'));
-//var_dump($redis -> sUnion('set', 'set2'));
-var_dump($redis -> sScan('set', '*', 10));
+var_dump($redis -> zAdd('zset', 0, 'a'));
+var_dump($redis -> zAdd('zset', 1, 'b'));
+var_dump($redis -> zAdd('zset', 2, 'c'));
+var_dump($redis -> zAdd('zset', 3, 'd'));
+var_dump($redis -> zAdd('zset', 4, 'e'));
+var_dump($redis -> zCard('zset'));
+var_dump($redis -> zCount('zset', 2, 3));
+var_dump($redis -> zIncrBy('zset', 'c', 4.5));

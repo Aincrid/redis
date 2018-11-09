@@ -16,8 +16,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="1145" column="34" lean-forward="true" selection-start-line="1145" selection-start-column="34" selection-end-line="1145" selection-end-column="34" />
+            <state relative-caret-position="365">
+              <caret line="1151" column="46" selection-start-line="1151" selection-start-column="46" selection-end-line="1151" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -32,6 +32,7 @@
       <find>exists</find>
       <find>sScan</find>
       <find>lPush</find>
+      <find>zAdd</find>
     </findStrings>
     <replaceStrings>
       <replace>$dbNum</replace>
@@ -61,8 +62,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="347" />
-    <option name="y" value="30" />
+    <option name="x" value="223" />
+    <option name="y" value="125" />
     <option name="width" value="1750" />
     <option name="height" value="1060" />
   </component>
@@ -119,7 +120,7 @@
       <workItem from="1541425729539" duration="6125000" />
       <workItem from="1541484250993" duration="12523000" />
       <workItem from="1541554561530" duration="23460000" />
-      <workItem from="1541726818267" duration="5134000" />
+      <workItem from="1541726818267" duration="5627000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -146,10 +147,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63459000" />
+    <option name="totallyTimeSpent" value="63952000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="278" y="24" width="1400" height="848" extended-state="0" />
+    <frame x="179" y="100" width="1400" height="848" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08271237" />
@@ -261,8 +262,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="1145" column="34" lean-forward="true" selection-start-line="1145" selection-start-column="34" selection-end-line="1145" selection-end-column="34" />
+        <state relative-caret-position="365">
+          <caret line="1151" column="46" selection-start-line="1151" selection-start-column="46" selection-end-line="1151" selection-end-column="46" />
         </state>
       </provider>
     </entry>

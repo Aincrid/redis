@@ -757,6 +757,7 @@ class RedisClass
     public function sAdd($key, ...$val)
     {
         array_unshift($val, $key);
+        var_dump($val);
         return call_user_func_array(array(self::$redis, 'sAdd'), $val);
     }
 

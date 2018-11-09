@@ -1146,4 +1146,6 @@ var_dump($redis -> sAdd('set', 'a', 'b', 'c'));
 var_dump($redis -> sAdd('set2', 'b', 'c', 'd', 'e'));
 var_dump($redis -> sCard('set'));
 var_dump($redis -> sDiff('set', 'set2'));
-var_dump($redis -> sDiffStore('sdiff', 'set', 'set2'));
+//var_dump($redis -> sDiffStore('sdiff', 'set', 'set2'));
+var_dump($redis -> sInter('set', 'set2'));
+var_dump($redis -> sInter('set', 'set2', 'set3'));

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ec57749-dcc3-43ee-b285-d190dcd1635b" name="Default" comment="" />
+    <list default="true" id="2ec57749-dcc3-43ee-b285-d190dcd1635b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/RedisClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/RedisClass.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +16,8 @@
       <file leaf-file-name="RedisClass.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="1145" column="33" selection-start-line="1145" selection-start-column="33" selection-end-line="1145" selection-end-column="33" />
+            <state relative-caret-position="556">
+              <caret line="1148" column="55" selection-start-line="1148" selection-start-column="55" selection-end-line="1148" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -117,7 +119,7 @@
       <workItem from="1541425729539" duration="6125000" />
       <workItem from="1541484250993" duration="12523000" />
       <workItem from="1541554561530" duration="23460000" />
-      <workItem from="1541726818267" duration="1729000" />
+      <workItem from="1541726818267" duration="1971000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1541402952968</created>
@@ -144,10 +146,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60054000" />
+    <option name="totallyTimeSpent" value="60296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07439678" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -155,7 +158,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067025" side_tool="true" weight="0.3281027" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3281027" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3281027" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932975" weight="0.3266762" />
@@ -258,8 +261,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RedisClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="1145" column="33" selection-start-line="1145" selection-start-column="33" selection-end-line="1145" selection-end-column="33" />
+        <state relative-caret-position="556">
+          <caret line="1148" column="55" selection-start-line="1148" selection-start-column="55" selection-end-line="1148" selection-end-column="55" />
         </state>
       </provider>
     </entry>

@@ -893,9 +893,8 @@ class RedisClass
      * @param mixed ...$key
      * @return mixed
      */
-    public function sUnionStore($storeKey, ...$key)
+    public function sUnionStore(...$key)
     {
-        array_unshift($key, $storeKey);
         return call_user_func_array(array(self::$redis, 'sUnionStore'), $key);
     }
 
@@ -1142,13 +1141,8 @@ class RedisClass
 echo '<pre>';
 $redis = RedisClass::getSingleInstance('127.0.0.1', '6379');
 echo 'set<br>';
-//var_dump($redis -> sAdd('set', 'a', 'b', 'c'));
-//var_dump($redis -> sAdd('set2', 'b', 'c', 'd', 'e'));
-var_dump($redis -> sCard('set'));
-var_dump($redis -> sDiff('set', 'set2'));
-//var_dump($redis -> sDiffStore('sdiff', 'set', 'set2'));
-//var_dump($redis -> sInter('set', 'set2'));
-//var_dump($redis -> sInter('set', 'set2', 'set3'));
-var_dump($redis -> sIsMember('set', 'a'));
-var_dump($redis -> sMembers('set'));
-var_dump($redis -> sMove('set2', 'set', 'e'));
+var_dump($redis -> sPop('set'));
+var_dump($redis -> sRandMember('set', 2));
+var_dump($redis -> sRemove('set2', 'c', 'd'));
+var_dump($redis -> sUnion('set', 'set2'));
+var_dump($redis -> sScan('set', '*', 10));

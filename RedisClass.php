@@ -919,7 +919,7 @@ class RedisClass
             }
 
         }while($it > 0);
-        var_dump($resultArray);
+        var_dump($resultArr);
         return $resultArr;
     }
 

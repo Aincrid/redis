@@ -1150,8 +1150,5 @@ var_dump($redis -> zAdd('zset1', 10, 'e'));
 //var_dump($redis -> zInter('dstSrc', ['zset', 'zset1'], [2, 4], 'sum'));
 //var_dump($redis -> zUnion('dstUnion', ['zset', 'zset1'], [2, 4], 'sum'));
 //var_dump($redis -> zRange('zset', 0, -1));
-var_dump($redis -> zRank('zset', 'a'));
-var_dump($redis -> zRevRank('zset', 'a'));
-
-
-
+var_dump($redis -> zRem('zset', 'a', 'c', 'g'));
+var_dump($redis -> zScan('zset', '*', 10));
